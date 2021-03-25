@@ -1,6 +1,10 @@
 package com.hclspringsecurity.entities;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -19,12 +23,15 @@ public class User {
    @Column
    private String password;
 
+   private SimpleGrantedAuthority roles;
+
    public User() {}
 
    public User(String username, String email, String password) {
       this.username = username;
       this.email = email;
       this.password = password;
+      this.roles = new SimpleGrantedAuthority("USER");
    }
 
    public Long getId() {
@@ -57,5 +64,9 @@ public class User {
 
    public boolean getActive() {
       return true;
+   }
+
+   public SimpleGrantedAuthority getRole() {
+      return role;
    }
 }
