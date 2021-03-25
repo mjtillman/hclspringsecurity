@@ -16,14 +16,15 @@ public class User {
    @Column
    private String email;
 
+   @Column
    private String password;
 
    public User() {}
 
-   public User(String username, String email, String password1) {
+   public User(String username, String email, String password) {
       this.username = username;
       this.email = email;
-      this.password = password1;
+      this.password = password;
    }
 
    public Long getId() {
@@ -52,5 +53,9 @@ public class User {
 
    public void setPassword(String password) {
       this.password = password;
+   }
+
+   public boolean getActive() {
+      return true;
    }
 }

@@ -1,7 +1,7 @@
 package com.hclspringsecurity.controllers;
 
 import com.hclspringsecurity.entities.User;
-import com.hclspringsecurity.exceptions.InvalidCredentialException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class InvalidCredentialExceptionController {
 
-   @ExceptionHandler(value = InvalidCredentialException.class)
-   public ModelAndView loginError(InvalidCredentialException ex) {
+   @ExceptionHandler(value = UsernameNotFoundException.class)
+   public ModelAndView loginError(UsernameNotFoundException ex) {
 
       String errMsg1 = "Invalid user credentials.";
       String errMsg2 = "Please try again.";
