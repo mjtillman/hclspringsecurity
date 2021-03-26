@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController {
@@ -19,22 +24,18 @@ public class LoginController {
       return "home";
    }
 
-//   @PostMapping("/login")
-//   public ModelAndView submitLogin(@ModelAttribute User user) throws UsernameNotFoundException {
-//
-//      User checkUser;
-//
-//      ModelAndView mav = new ModelAndView();
-//
-//      checkUser = userService.findUserbyUsername(user.getUsername());
-//      String password = user.getPassword();
-//
-//      if (password.equals(checkUser.getPassword())) {
-//         mav.setViewName("landing");
-//         mav.addObject("user", checkUser);
-//      } else {
-//         throw new UsernameNotFoundException(checkUser.getUsername() + " not found.");
-//      }
-//      return mav;
-//   }
+   @PostMapping({"/", "login"})
+   public ModelAndView login(HttpServletRequest request) {
+      User user = (User) request.getAttribute("user");
+
+      ModelAndView mav = new ModelAndView("landing");
+      mav.addObject("user", user);
+
+      return mav;
+   }
+
+   @GetMapping("/landing")
+   public String landing() {
+      return "landing";
+   }
 }
