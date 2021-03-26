@@ -1,7 +1,6 @@
 package com.hclspringsecurity.services;
 
 import com.hclspringsecurity.entities.User;
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
    @Override
    @Transactional
    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-      User user = userService.findUserbyUsername(username);
+      User user = userService.findUserByUsername(username);
       List<GrantedAuthority> auths = getUserAuths(user.getRole());
       return buildUserForAuthentication(user, auths);
    }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation</title>
+</head>
+<body>
+    <div th:fragment="navigation" class="navbar navbar-light bg-light">
+        <div class="container-fluid justify-content-between">
+            <a href="/" class="navbar-brand">Spring Security</a>
+            <form class="nav-item justify-content-end">
+                <a href="/login" class="btn btn-sm btn-outline-secondary">Login</a>
+                <a href="/register" class="btn btn-sm btn-outline-secondary">Register</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

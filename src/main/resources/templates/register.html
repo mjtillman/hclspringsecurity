@@ -27,20 +27,26 @@
 <main class="row">
     <div class="col-3"></div>
     <div class="card col-6 mt-5">
-        <h5 class="py-4">Login</h5>
-        <form action="/login" th:action="@{/login}" th:object="${user}"
-              name="login" id="login" method="GET">
+        <h5 class="py-4">Register</h5>
+
+        <form action="/register"  th:action="@{/register}" th:object="${user}" method="POST" id="register">
             <div class="form-floating mb-3">
-                <input type="text" th:field="*{username}" class="form-control"
-                       id="username" placeholder="Username" required>
+                <label for="email">Email</label>
+                <input type="email" th:field="*{email}" class="form-control" id="email" required />
+            </div>
+            <div class="form-floating mb-3">
                 <label for="username">Username</label>
+                <input type="text" th:field="*{username}" class="form-control" id="username" required />
+            </div>
+            <div class="form-floating mb-3">
+                <label for="password">Password</label>
+                <input type="password" th:field="*{password}" class="form-control" id="password" required />
             </div>
             <div class="form-floating mb-4">
-                <input type="password" th:field="*{password}" class="form-control"
-                       id="password" placeholder="Password" required>
-                <label for="password">Password</label>
+                <label for="confirm">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm" required />
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
     <div class="col-3"></div>
